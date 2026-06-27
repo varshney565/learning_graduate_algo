@@ -41,9 +41,12 @@ int lcs_tabulation(string &a,string &b,int A,int B,vector<vector<int>> &dp) {
             if(a[a_len-1] == b[b_len-1]) {
                 return dp[a_len][b_len] = 1 + lcs(a,b,a_len-1,b_len-1,dp);
             }
-            int l1 = lcs(a,b,a_len-1,b_len,dp);
-            int l2 = lcs(a,b,a_len,b_len-1,dp);
-            int l3 = lcs(a,b,a_len-1,b_len-1,dp);
+            // int l1 = lcs(a,b,a_len-1,b_len,dp);
+            int l1 = dp[a_len-1][b_len];
+            // int l2 = lcs(a,b,a_len,b_len-1,dp);
+            int l2 = dp[a_len][b_len-1];
+            // int l3 = lcs(a,b,a_len-1,b_len-1,dp);
+            int l3 = dp[a_len-1][b_len-1];
             dp[a_len][b_len] = max({l1,l2,l3});
         }
     }
